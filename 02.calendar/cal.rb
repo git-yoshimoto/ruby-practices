@@ -33,7 +33,7 @@ while last_day > count
       print "   "
     end
   end
-  print target_date.next_day(count).day.to_s.ljust(3)
+  print target_date.next_day(count).day.to_s.rjust(2) + " "
   puts "" if target_date.next_day(count).cwday == 6
   count += 1
 end
