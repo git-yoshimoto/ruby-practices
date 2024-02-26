@@ -13,15 +13,14 @@ first_date = Date.new(argv_year, argv_month, 1)
 last_date = Date.new(argv_year, argv_month, -1)
 
 puts "      #{argv_month}月 #{argv_year}"
-DAY_OF_WEEK.each do |day_of_week|
-  print day_of_week + " "
-end
-puts ""
-print "   " * first_date.next_day(0).wday
+print DAY_OF_WEEK.join(' ')
 
-Range.new(first_date, last_date).each do |date|
+puts ""
+print "   " * first_date.wday
+
+(first_date..last_date).each do |date|
   print date.day.to_s.rjust(2) + " "
-  puts "" if date.cwday == 6
+  puts "" if date.saturday?
 end
 
 puts "\n\n"
